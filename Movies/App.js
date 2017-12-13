@@ -4,31 +4,22 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+ import React, { Component } from 'react';
+ import {
+   Platform,
+   StyleSheet,
+   Text,
+   View
+ } from 'react-native';
 
-import MoviesList from './app/components/MoviesList';
+ import { StackNavigator } from 'react-navigation';
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <MoviesList></MoviesList>
-      </View>
-    );
-  }
-}
+ import HomeScreen from './app/screens/HomeScreen.js'
+ import DetailScreen from './app/screens/DetailScreen.js'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
+ const Navigation = StackNavigator({
+   Home: { screen: HomeScreen },
+   Detail: { screen: DetailScreen }
+ });
+
+ export default Navigation;

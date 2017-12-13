@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { AppRegistry, FlatList, StyleSheet, Text, View, Image } from 'react-native';
+import { AppRegistry, FlatList, StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 
 import styles from './MoviesListStyles'
 
 export default class MoviesList extends Component {
+
   constructor(props) {
     super(props);
 
@@ -33,18 +34,22 @@ export default class MoviesList extends Component {
       .catch(error => {
         this.setState({ error, loading: false });
       });
-  };
+  }
 
   render() {
+    const {navigate} = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <FlatList
           keyExtractor={item => item.id}
           data={this.state.data}
-          renderItem={({item}) => <View style={styles.item}>
-            <Image source={{uri: 'https://image.tmdb.org/t/p/w300' + item.poster_path}} style={styles.image} />
-            <Text style={styles.label}>{item.original_title}</Text>
-          </View>}
+          renderItem={({item}) => <TouchableHighlight onPress={() => navigate('Detail', {item: item})} >
+            <View style={styles.item}>
+              <Image source={{uri: 'https://image.tmdb.org/t/p/w300' + item.poster_path}} style={styles.image} />
+              <Text style={styles.label}>{item.original_title}</Text>
+            </View>
+          </TouchableHighlight>}
         />
       </View>
     );
