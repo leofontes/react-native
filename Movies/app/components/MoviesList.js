@@ -18,14 +18,13 @@ export default class MoviesList extends Component {
   }
 
   makeRemoteRequest = () => {
-    const { page, seed } = this.state;
-    const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
+    const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=ac6ebfcd9300aeee710aef10fe23e547`;
     this.setState({ loading: true });
     fetch(url)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          data: page === 1 ? res.results : [...this.state.data, ...res.results],
+          data: res.results,
           error: res.error || null,
           loading: false,
           refreshing: false
@@ -40,19 +39,11 @@ export default class MoviesList extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-          ]}
+          keyExtractor={item => item.id}
+          data={this.state.data}
           renderItem={({item}) => <View style={styles.item}>
-            <Image source={require('./../assets/omg.jpg')} style={styles.image} />
-            <Text style={styles.label}>{item.key}</Text>
+            <Image source={{uri: 'https://image.tmdb.org/t/p/w300' + item.poster_path}} style={styles.image} />
+            <Text style={styles.label}>{item.original_title}</Text>
           </View>}
         />
       </View>
