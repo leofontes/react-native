@@ -27,8 +27,7 @@ export default class MoviesList extends Component {
         this.setState({
           data: res.results,
           error: res.error || null,
-          loading: false,
-          refreshing: false
+          loading: false
         });
       })
       .catch(error => {

@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native';
 
-import MoviesList from './../components/MoviesList';
+import MoviesList from './../components/MoviesList/MoviesList';
 
 export default class HomeScreen extends Component<{}> {
   static navigationOptions = {
