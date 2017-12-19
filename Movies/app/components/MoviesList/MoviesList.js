@@ -43,7 +43,7 @@ export default class MoviesList extends Component {
         <FlatList
           keyExtractor={item => item.id}
           data={this.state.data}
-          renderItem={({item}) => <TouchableHighlight onPress={() => navigate('Detail', {item: item})} >
+          renderItem={({item}) => <TouchableHighlight style={styles.touchableHighlight} onPress={() => navigate('Detail', {item: item})} >
             <View style={styles.item}>
               <Image source={{uri: 'https://image.tmdb.org/t/p/w300' + item.poster_path}} style={styles.image} />
               <Text style={styles.label}>{item.original_title}</Text>

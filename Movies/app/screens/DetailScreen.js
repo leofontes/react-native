@@ -18,6 +18,8 @@ export default class DetailScreen extends Component<{}> {
         poster_path: '-',
         overview: '-',
         release_date: '-',
+        budget: 0,
+        revenue: 0,
         genres: []
       }
     };
@@ -44,10 +46,6 @@ export default class DetailScreen extends Component<{}> {
       });
   }
 
-  // static navigationOptions = {
-  //   title: this.state.movie.original_title
-  // }
-//<Text style={styles.title}>{this.state.params.item.original_title}</Text>
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.item.original_title}`,
   });

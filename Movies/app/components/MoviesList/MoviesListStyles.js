@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 module.exports = StyleSheet.create({
   container: {
    flex: 1,
+   paddingTop: 22,
    flexDirection: 'row',
   },
   item: {

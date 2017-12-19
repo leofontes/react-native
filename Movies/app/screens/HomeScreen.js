@@ -4,7 +4,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 import MoviesList from './../components/MoviesList/MoviesList';
@@ -16,9 +17,9 @@ export default class HomeScreen extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <MoviesList navigation={this.props.navigation}></MoviesList>
-      </View>
+      <ScrollView>
+          <MoviesList navigation={this.props.navigation}></MoviesList>
+      </ScrollView>
     );
   }
 }
