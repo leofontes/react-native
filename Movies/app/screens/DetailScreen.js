@@ -14,6 +14,7 @@ export default class DetailScreen extends Component<{}> {
       idMovie: state.params.item.id,
       loading: true,
       movie: {
+        original_title: state.params.item.original_title,
         poster_path: '-',
         overview: '-',
         release_date: '-',
@@ -43,20 +44,26 @@ export default class DetailScreen extends Component<{}> {
       });
   }
 
-  static navigationOptions = {
-    title: 'DESCOBRIR COMO SETAR'
-  }
+  // static navigationOptions = {
+  //   title: this.state.movie.original_title
+  // }
 //<Text style={styles.title}>{this.state.params.item.original_title}</Text>
+  static navigationOptions = ({ navigation }) => ({
+    title: `${navigation.state.params.item.original_title}`,
+  });
 
   formatDate = (date) => {
     return date.substring(date.length - 2, date.length) + '/' + date.substring(date.length - 5, date.length - 3) + '/' + date.substring(0, 4)
   }
 
-  formatCurrency = (valueNum) => {
-    var value = '' + valueNum
-    var formatted = value.substring(value.length - 2, value.length)
-    //TODO terminar
-    return formatted
+  formatCurrency = (value) => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+    });
+
+    return formatter.format(value);
   }
 
   render() {
@@ -84,7 +91,7 @@ export default class DetailScreen extends Component<{}> {
 
         <View style={styles.moneyGrid}>
           <DetailTextGroup header='Budget' body={this.formatCurrency(this.state.movie.budget)} style={styles.descriptionGroup}/>
-          <DetailTextGroup header='Revenue' body={this.state.movie.revenue} style={styles.descriptionGroup}/>
+          <DetailTextGroup header='Revenue' body={this.formatCurrency(this.state.movie.revenue)} style={styles.descriptionGroup}/>
         </View>
       </ScrollView>
     );

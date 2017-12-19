@@ -10,8 +10,7 @@ module.exports = StyleSheet.create({
     marginBottom: 10
   },
   image: {
-    flex: 1,
-    minHeight: 300
+    flex: 1
   },
   gridRight: {
     flex: 1
