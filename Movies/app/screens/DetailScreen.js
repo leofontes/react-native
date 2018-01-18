@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, ScrollView, Image, FlatList } from 'react-native';
+import { Text, View, ScrollView, Image, FlatList } from 'react-native';
 
 import styles from './styles/DetailScreenStyles'
 import DetailTextGroup from './../components/DetailTextGroup/DetailTextGroup'
