@@ -6,9 +6,9 @@ import styles from './LoginScreenStyles'
 export default class DetailScreen extends Component<{}> {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Image source={require('../../assets/logo.png')} style={styles.loginLogo} />
-        <Text>abc123</Text>
+        <TextInput placeholder="E-mail"/>
       </View>
     );
   }
